@@ -1,17 +1,105 @@
 ﻿using System;
+using System.Globalization;
 using System.IO;
+using System.Runtime.ConstrainedExecution;
+using System.Runtime.Serialization.Formatters.Binary;
+using System.Runtime.Serialization;
+using System.Collections;
 
 class MainClass
 {
     public static DateTime najstarsza = DateTime.MaxValue;
+    public static List<(string name, long size)> kolekcja = new List<(string name, long size)>();
+
     public static void Main(string[] args)
     {
         var dir = args[0];
         PrintDirectoryTree(dir, 16, new string[] { "folder3" });
         Console.WriteLine(najstarsza);
-       // Console.WriteLine(oldest(args[0]));
+        loadOnlyMainFolderFiles(args[0]);
+        kolekcja.Sort(new listComparer());
+        foreach (var item in kolekcja) {
+            Console.WriteLine(item.name + " -> " + item.size);
+        }
+
+        FileStream fs = new FileStream("DataFile.dat", FileMode.Create);
+
+        // Construct a BinaryFormatter and use it to serialize the data to the stream.
+        BinaryFormatter formatter = new BinaryFormatter();
+        try
+        {
+            formatter.Serialize(fs, kolekcja);
+        }
+        catch (SerializationException e)
+        {
+            Console.WriteLine("Failed to serialize. Reason: " + e.Message);
+            throw;
+        }
+        finally
+        {
+            fs.Close();
+        }
+        Deserialize();
     }
 
+    static void Deserialize()
+    {
+        // Declare the hashtable reference.
+           List<(string name, long size)> kolekcja1 = new List<(string name, long size)>();
+
+    // Open the file containing the data that you want to deserialize.
+    FileStream fs = new FileStream("DataFile.dat", FileMode.Open);
+        try
+        {
+            BinaryFormatter formatter = new BinaryFormatter();
+
+            // Deserialize the hashtable from the file and
+            // assign the reference to the local variable.
+            kolekcja1 = (List<(string name, long size)>)formatter.Deserialize(fs);
+        }
+        catch (SerializationException e)
+        {
+            Console.WriteLine("Failed to deserialize. Reason: " + e.Message);
+            throw;
+        }
+        finally
+        {
+            fs.Close();
+        }
+
+        // To prove that the table deserialized correctly,
+        // display the key/value pairs.
+        foreach ((string name, long size) de in kolekcja1)
+        {
+            Console.WriteLine("{0} ->{1}.", de.name, de.size);
+        }
+    }
+    public class listComparer : IComparer<(string, long)>
+    {
+        public int Compare((string, long) x, (string, long) y)
+        {
+            if(x.Item1.Length >  y.Item1.Length) return -1;
+            if (x.Item1.Length < y.Item1.Length) return 1;
+            return String.Compare(x.Item1, y.Item1);
+        }
+    }
+
+    public static void loadOnlyMainFolderFiles(string directory)
+    {
+        foreach (string f in Directory.GetFiles(directory))
+        {
+            long length = new System.IO.FileInfo(f).Length;
+
+            kolekcja.Add((Path.GetFileName(f), length));
+   
+        }
+
+        foreach (string d in Directory.GetDirectories(directory))
+        {
+            int fileCount = Directory.GetFiles(d, "*.*", SearchOption.AllDirectories).Length;
+            kolekcja.Add((Path.GetFileName(d), fileCount));
+        }
+    }
 
     public static void PrintDirectoryTree(string directory, int lvl, string[] excludedFolders = null, string lvlSeperator = "")
     {
