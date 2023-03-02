@@ -96,24 +96,13 @@ namespace WpfApp1
             {
                 Header = "Open"
             };
-            create.Click += (s, e) => openFile(s, e, tvi);
+
             var delete = new MenuItem()
             {
                 Header = "Delete"
             };
             tvi.ContextMenu.Items.Add(create);
             tvi.ContextMenu.Items.Add(delete);
-        }
-
- 
-
-        private void openFile(object sender, EventArgs e, TreeViewItem tvi)
-        {
-            FileInfo fi = new FileInfo(tvi.Tag.ToString() + "\\" + tvi.Header.ToString());
-            string text = System.IO.File.ReadAllText(tvi.Tag.ToString() + "\\" + tvi.Header.ToString());
-            MessageBox.Show(tvi.Tag.ToString() + "\\" + tvi.Header.ToString() );
-            this.textBlock.Text = text;
-
         }
 
         public void toolbarExit_Click(object sender, RoutedEventArgs e)

@@ -17,20 +17,16 @@
                 </MenuItem>
             </Menu>
         </ToolBar>
-        <TreeView x:Name="tree" Margin="-2,33,558,-33" >
-        </TreeView>
-        <TextBox x:Name="textBlock" HorizontalAlignment="Left" Margin="239,33,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="391" Width="543" VerticalScrollBarVisibility="Auto" IsReadOnly="True" >
-        
-        </TextBox>
+        <TreeView x:Name="tree" Margin="-2,33,2,-33" ItemsSource="{Binding}" />
 
         <Grid.ColumnDefinitions>
 
             <ColumnDefinition Width="99*">
-
+                
             </ColumnDefinition>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
 
     </Grid>
-
+    
 </Window>
