@@ -4,21 +4,10 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfApp1"
-        xmlns:Model="clr-namespace:WpfApp1.Model" 
+
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
-    <Window.Resources>
 
-        <HierarchicalDataTemplate DataType="{x:Type Model:DirectoryItem}"
-                                  ItemsSource="{Binding Items}">
-            <TextBlock Text="{Binding Path=Name}" ToolTip="{Binding Path=Path}" />
-        </HierarchicalDataTemplate>
-
-        <DataTemplate DataType="{x:Type Model:FileItem}">
-            <TextBlock Text="{Binding Path=Name}" ToolTip="{Binding Path=Path}" />
-        </DataTemplate>
-
-    </Window.Resources>
     <Grid>
         <ToolBar x:Name="toolBar" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" VerticalAlignment="Top">
             <Menu>
@@ -28,7 +17,7 @@
                 </MenuItem>
             </Menu>
         </ToolBar>
-        <TreeView Margin="-2,33,2,-33" ItemsSource="{Binding}" />
+        <TreeView x:Name="tree" Margin="-2,33,2,-33" ItemsSource="{Binding}" />
 
         <Grid.ColumnDefinitions>
 
