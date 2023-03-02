@@ -90,6 +90,7 @@ namespace WpfApp1
             {
                 Header = "Delete"
             };
+            delete.Click += (s, e) => deleteDic(s, e, tvi);
             tvi.ContextMenu.Items.Add(create);
             tvi.ContextMenu.Items.Add(delete); 
         }
@@ -97,7 +98,7 @@ namespace WpfApp1
         private void setContextMenuFile(TreeViewItem tvi)
         {
             tvi.ContextMenu = new ContextMenu();
-
+            
             var create = new MenuItem()
             {
                 Header = "Open"
@@ -112,7 +113,12 @@ namespace WpfApp1
             tvi.ContextMenu.Items.Add(delete);
         }
 
-
+        private void deleteDic(object sender, EventArgs e, TreeViewItem tvi)
+        {
+            MessageBox.Show(tvi.Tag.ToString() + tvi.Header.ToString());
+            Directory.Delete(tvi.Tag.ToString()+ "\\" + tvi.Header.ToString(), true);
+            createATreeRoot(openedFolderPath);
+        }
         private void deleteFile(object sender, EventArgs e, TreeViewItem tvi)
         {
             try
