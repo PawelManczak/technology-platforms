@@ -12,8 +12,6 @@ namespace WpfApp1
 {
     public partial class MainWindow : Window
     {
-        private string openedFolderPath = "";
-
         public MainWindow()
         {
 
@@ -27,29 +25,25 @@ namespace WpfApp1
                 if (dialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
                 {
                     string path = dialog.SelectedPath;
-                    //MessageBox.Show(path);
-                    openedFolderPath = path;
+                    MessageBox.Show(path);
+
 
                     //create a tree
-                    createATreeRoot(path);
+                    var root = new TreeViewItem
+                    {
+                        Header = Path.GetFileName(path),
+                        Tag = Path.GetDirectoryName(path)
+                    };
+                    setContextMenuDir(root);
+                    DirectoryInfo dir = new DirectoryInfo(path);
+                    createATree(root, dir);
+
+                    this.tree.Items.Add(root);
                 }
             }
 
         }
-        void createATreeRoot(string path)
-        {
-            tree.Items.Clear();
-            var root = new TreeViewItem
-            {
-                Header = Path.GetFileName(path),
-                Tag = Path.GetDirectoryName(path)
-            };
-            setContextMenuDir(root);
-            DirectoryInfo dir = new DirectoryInfo(path);
-            createATree(root, dir);
 
-            this.tree.Items.Add(root);
-        }
         void createATree(TreeViewItem root, DirectoryInfo dir)
         {
             foreach (var item in dir.EnumerateFileSystemInfos())
@@ -107,37 +101,19 @@ namespace WpfApp1
             {
                 Header = "Delete"
             };
-            delete.Click += (s, e) => deleteFile(s, e, tvi);
             tvi.ContextMenu.Items.Add(create);
             tvi.ContextMenu.Items.Add(delete);
         }
 
+ 
 
-        private void deleteFile(object sender, EventArgs e, TreeViewItem tvi)
-        {
-            try
-            {
-                // Check if file exists with its full path    
-                if (File.Exists(Path.Combine(tvi.Tag.ToString(), tvi.Header.ToString())))
-                {
-                    // If file found, delete it    
-                    File.Delete(Path.Combine(tvi.Tag.ToString(), tvi.Header.ToString()));
-                    Console.WriteLine("File deleted.");
-                    createATreeRoot(openedFolderPath);
-                }
-                else Console.WriteLine("File not found");
-            }
-            catch (IOException ioExp)
-            {
-                Console.WriteLine(ioExp.Message);
-            }
-       
-        }
         private void openFile(object sender, EventArgs e, TreeViewItem tvi)
         {
+            FileInfo fi = new FileInfo(tvi.Tag.ToString() + "\\" + tvi.Header.ToString());
             string text = System.IO.File.ReadAllText(tvi.Tag.ToString() + "\\" + tvi.Header.ToString());
             MessageBox.Show(tvi.Tag.ToString() + "\\" + tvi.Header.ToString() );
             this.textBlock.Text = text;
+
         }
 
         public void toolbarExit_Click(object sender, RoutedEventArgs e)
