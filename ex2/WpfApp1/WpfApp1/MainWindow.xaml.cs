@@ -4,8 +4,10 @@ using System.Reflection;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Forms;
+using System.Windows.Shapes;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 using MessageBox = System.Windows.MessageBox;
+using Path = System.IO.Path;
 using Window = System.Windows.Window;
 
 namespace WpfApp1
@@ -32,6 +34,8 @@ namespace WpfApp1
 
                     //create a tree
                     createATreeRoot(path);
+
+
                 }
             }
 
@@ -124,10 +128,15 @@ namespace WpfApp1
             try
             {
                 // Check if file exists with its full path    
-                if (File.Exists(Path.Combine(tvi.Tag.ToString(), tvi.Header.ToString())))
+                if (File.Exists(System.IO.Path.Combine(tvi.Tag.ToString(), tvi.Header.ToString())))
                 {
+                    var path = tvi.Tag.ToString() + "\\" + tvi.Header.ToString();
+                    var attr = File.GetAttributes(path);
+                    if (attr.HasFlag(FileAttributes.ReadOnly))
+                        File.SetAttributes(path, attr & ~FileAttributes.ReadOnly);
+
                     // If file found, delete it    
-                    File.Delete(Path.Combine(tvi.Tag.ToString(), tvi.Header.ToString()));
+                    File.Delete(System.IO.Path.Combine(tvi.Tag.ToString(), tvi.Header.ToString()));
                     Console.WriteLine("File deleted.");
                     createATreeRoot(openedFolderPath);
                 }
@@ -151,6 +160,35 @@ namespace WpfApp1
             string text = System.IO.File.ReadAllText(tvi.Tag.ToString() + "\\" + tvi.Header.ToString());
             MessageBox.Show(tvi.Tag.ToString() + "\\" + tvi.Header.ToString() );
             this.textBlock.Text = text;
+
+            //rash
+            var attr = File.GetAttributes(tvi.Tag.ToString() + "\\" + tvi.Header.ToString());
+            var buildstring = "";
+            if (attr.HasFlag(FileAttributes.ReadOnly)){
+                buildstring += "r";
+            }
+            else buildstring += "-";
+
+            if (attr.HasFlag(FileAttributes.Archive))
+            {
+                buildstring += "a";
+            }
+            else buildstring += "-";
+
+            if (attr.HasFlag(FileAttributes.System))
+            {
+                buildstring += "s";
+            }
+            else buildstring += "-";
+
+            if (attr.HasFlag(FileAttributes.Hidden))
+            {
+                buildstring += "h";
+            }
+            else buildstring += "-";
+
+            rash.Text = buildstring;
+             
         }
 
         public void toolbarExit_Click(object sender, RoutedEventArgs e)

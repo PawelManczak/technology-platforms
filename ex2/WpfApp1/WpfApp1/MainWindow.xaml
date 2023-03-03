@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:WpfApp1"
 
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="490" Width="800">
 
     <Grid>
         <ToolBar x:Name="toolBar" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" VerticalAlignment="Top">
@@ -17,10 +17,22 @@
                 </MenuItem>
             </Menu>
         </ToolBar>
-        <TreeView x:Name="tree" Margin="-2,33,558,-33" >
+        <TreeView x:Name="tree" Margin="-3,31,567,3" >
+
         </TreeView>
+        <StatusBar Margin="3,439,26,1">
+            <UIElement.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </UIElement.RenderTransform>
+            <TextBlock x:Name="rash" Text="no data"/>
+        </StatusBar>
         <TextBox x:Name="textBlock" HorizontalAlignment="Left" Margin="239,33,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="391" Width="543" VerticalScrollBarVisibility="Auto" IsReadOnly="True" >
-        
+
         </TextBox>
 
         <Grid.ColumnDefinitions>
