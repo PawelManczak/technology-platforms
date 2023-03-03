@@ -1,0 +1,24 @@
+﻿<Window x:Class="WpfApp1.CreateDialog"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfApp1"
+        mc:Ignorable="d"
+        Title="CreateDialog" Height="350" Width="200">
+    <Grid>
+        <TextBlock HorizontalAlignment="Left" Margin="10,10,0,0" TextWrapping="Wrap" Text="Name" VerticalAlignment="Top"/>
+        <TextBox x:Name ="textInput"  HorizontalAlignment="Left" Margin="57,10,0,0" TextWrapping="Wrap" Text="Name" VerticalAlignment="Top" Width="120"/>
+        <StackPanel x:Name="Types" Margin="10,33,10,115">
+            <RadioButton x:Name="FileR"  IsChecked="True">File</RadioButton>
+            <RadioButton x:Name="DirectoryR">Directory</RadioButton>
+        </StackPanel>
+
+        <CheckBox x:Name = "ReadOnly" Content="ReadOnly" HorizontalAlignment="Left" Margin="49,106,0,0" VerticalAlignment="Top"/>
+        <CheckBox x:Name ="Archive" Content="Archive" HorizontalAlignment="Left" Margin="49,126,0,0" VerticalAlignment="Top"/>
+        <CheckBox x:Name = "Hidden" Content="Hidden" HorizontalAlignment="Left" Margin="49,146,0,0" VerticalAlignment="Top"/>
+        <CheckBox x:Name = "SystemC" Content="System" HorizontalAlignment="Left" Margin="49,86,0,0" VerticalAlignment="Top"/>
+        <Button  x:Name ="Ok" Click="ButtonOk" Content="Ok" HorizontalAlignment="Left" Margin="45,223,0,0" VerticalAlignment="Top"/>
+        <Button Click="ButtonCancel" x:Name ="Cancel" Content="Cancel" HorizontalAlignment="Left" Margin="100,223,0,0" VerticalAlignment="Top" ></Button>
+    </Grid>
+</Window>

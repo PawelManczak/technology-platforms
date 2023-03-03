@@ -85,7 +85,7 @@ namespace WpfApp1
             {
                 Header = "Create"
             };
-            create.Click += (s, e) => createFile(s, e, tvi);
+
             var delete = new MenuItem()
             {
                 Header = "Delete"
@@ -99,17 +99,17 @@ namespace WpfApp1
         {
             tvi.ContextMenu = new ContextMenu();
             
-            var open= new MenuItem()
+            var create = new MenuItem()
             {
                 Header = "Open"
             };
-            open.Click += (s, e) => openFile(s, e, tvi);
+            create.Click += (s, e) => openFile(s, e, tvi);
             var delete = new MenuItem()
             {
                 Header = "Delete"
             };
             delete.Click += (s, e) => deleteFile(s, e, tvi);
-            tvi.ContextMenu.Items.Add(open);
+            tvi.ContextMenu.Items.Add(create);
             tvi.ContextMenu.Items.Add(delete);
         }
 
@@ -138,13 +138,6 @@ namespace WpfApp1
                 Console.WriteLine(ioExp.Message);
             }
        
-        }
-
-        private void createFile(object sender, EventArgs e, TreeViewItem tvi)
-        {
-            var cD = new CreateDialog(tvi);
-            cD.ShowDialog();
-            createATreeRoot(openedFolderPath);
         }
         private void openFile(object sender, EventArgs e, TreeViewItem tvi)
         {
