@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -12,6 +13,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using static System.Net.Mime.MediaTypeNames;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.TextBox;
 
 namespace WpfApp1
@@ -39,9 +41,13 @@ namespace WpfApp1
             if(DirectoryR.IsChecked == true)
                 directory = true;
             else directory = false;
-            
-
             name = textInput.Text;
+
+            if (Regex.Match(name, @"^[A-Za-z0-9_~\-]{1,8}\.(txt|php|html)$").Success == false)
+            {
+                MessageBox.Show("Zła nazwa!");
+                return;
+            }
             archive = Archive.IsChecked == true;
             hidden = Hidden.IsChecked == true;  
             system = SystemC.IsChecked == true;
