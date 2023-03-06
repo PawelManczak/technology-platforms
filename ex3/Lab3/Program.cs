@@ -22,7 +22,25 @@ var results1 = from e in myCars
                    engineType = e.motor.model == "TDI" ? "Diesel" : "Petrol",
                    hppl = e.motor.power / e.motor.displacment
                };
+
 foreach (var result in results1)
 {
     Console.WriteLine(result);
+}
+//1 b
+
+var results2 = from e in results1
+               group e.hppl by e.engineType;
+
+foreach (var groupHeader in results2)
+{
+    int counter = 0;
+    double result = 0.0d;
+    foreach (var value in groupHeader)
+    {
+        result += value;
+        counter++;
+    }
+
+    Console.WriteLine(groupHeader.Key + " " + (result/counter).ToString());
 }
