@@ -2,6 +2,7 @@
 using Lab3;
 using System.Linq.Expressions;
 using System.Text;
+using System.Xml;
 using System.Xml.Linq;
 using System.Xml.Serialization;
 using System.Xml.XPath;
@@ -113,6 +114,19 @@ IEnumerable<XElement> nodes = from car in myCars
                               ));
 root.Add(nodes);
 xmlFile.Save("CarsTable.html");
+
+//6.1
+
+XDocument doc1 = XDocument.Load("CarsCollection.xml");
+
+foreach (XElement element in doc1.Descendants("power"))
+{
+    Console.WriteLine("1");
+    element.Name = "hp";
+}
+
+doc1.Save("ModifiedCarsCollection.xml");
+
 
 class mClass {
     public static void createXmlFromLinq(List<Car> myCars)
