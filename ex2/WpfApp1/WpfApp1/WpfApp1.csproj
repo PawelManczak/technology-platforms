@@ -9,6 +9,21 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="1\**" />
+    <Compile Remove="2\**" />
+    <Compile Remove="3\**" />
+    <EmbeddedResource Remove="1\**" />
+    <EmbeddedResource Remove="2\**" />
+    <EmbeddedResource Remove="3\**" />
+    <None Remove="1\**" />
+    <None Remove="2\**" />
+    <None Remove="3\**" />
+    <Page Remove="1\**" />
+    <Page Remove="2\**" />
+    <Page Remove="3\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <COMReference Include="{215d64d2-031c-33c7-96e3-61794cd1ee61}">
       <WrapperTool>tlbimp</WrapperTool>
       <VersionMinor>4</VersionMinor>

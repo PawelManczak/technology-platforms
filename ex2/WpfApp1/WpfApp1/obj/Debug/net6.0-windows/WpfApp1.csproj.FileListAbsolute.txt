@@ -21,3 +21,27 @@ C:\Users\pawelmanczak\source\repos\WpfApp1\WpfApp1\obj\Debug\net6.0-windows\WpfA
 C:\Users\pawelmanczak\source\repos\WpfApp1\WpfApp1\obj\Debug\net6.0-windows\ref\WpfApp1.dll
 C:\Users\pawelmanczak\source\repos\WpfApp1\WpfApp1\obj\Debug\net6.0-windows\WpfApp1.csproj.ResolveComReference.cache
 C:\Users\pawelmanczak\source\repos\WpfApp1\WpfApp1\obj\Debug\net6.0-windows\GeneratedInternalTypeHelper.g.cs
+\\Mac\Home\Documents\platformy technologiczne\ex2\WpfApp1\WpfApp1\obj\Debug\net6.0-windows\WpfApp1.csproj.AssemblyReference.cache
+\\Mac\Home\Documents\platformy technologiczne\ex2\WpfApp1\WpfApp1\obj\Debug\net6.0-windows\WpfApp1.csproj.ResolveComReference.cache
+\\Mac\Home\Documents\platformy technologiczne\ex2\WpfApp1\WpfApp1\obj\Debug\net6.0-windows\CreateDialog.g.cs
+\\Mac\Home\Documents\platformy technologiczne\ex2\WpfApp1\WpfApp1\obj\Debug\net6.0-windows\MainWindow.g.cs
+\\Mac\Home\Documents\platformy technologiczne\ex2\WpfApp1\WpfApp1\obj\Debug\net6.0-windows\App.g.cs
+\\Mac\Home\Documents\platformy technologiczne\ex2\WpfApp1\WpfApp1\obj\Debug\net6.0-windows\WpfApp1_MarkupCompile.cache
+\\Mac\Home\Documents\platformy technologiczne\ex2\WpfApp1\WpfApp1\obj\Debug\net6.0-windows\WpfApp1_MarkupCompile.lref
+\\Mac\Home\Documents\platformy technologiczne\ex2\WpfApp1\WpfApp1\obj\Debug\net6.0-windows\WpfApp1.dll
+\\Mac\Home\Documents\platformy technologiczne\ex2\WpfApp1\WpfApp1\obj\Debug\net6.0-windows\refint\WpfApp1.dll
+\\Mac\Home\Documents\platformy technologiczne\ex2\WpfApp1\WpfApp1\obj\Debug\net6.0-windows\WpfApp1.pdb
+\\Mac\Home\Documents\platformy technologiczne\ex2\WpfApp1\WpfApp1\bin\Debug\net6.0-windows\WpfApp1.exe
+\\Mac\Home\Documents\platformy technologiczne\ex2\WpfApp1\WpfApp1\bin\Debug\net6.0-windows\WpfApp1.deps.json
+\\Mac\Home\Documents\platformy technologiczne\ex2\WpfApp1\WpfApp1\bin\Debug\net6.0-windows\WpfApp1.runtimeconfig.json
+\\Mac\Home\Documents\platformy technologiczne\ex2\WpfApp1\WpfApp1\bin\Debug\net6.0-windows\WpfApp1.dll
+\\Mac\Home\Documents\platformy technologiczne\ex2\WpfApp1\WpfApp1\bin\Debug\net6.0-windows\WpfApp1.pdb
+\\Mac\Home\Documents\platformy technologiczne\ex2\WpfApp1\WpfApp1\obj\Debug\net6.0-windows\CreateDialog.baml
+\\Mac\Home\Documents\platformy technologiczne\ex2\WpfApp1\WpfApp1\obj\Debug\net6.0-windows\MainWindow.baml
+\\Mac\Home\Documents\platformy technologiczne\ex2\WpfApp1\WpfApp1\obj\Debug\net6.0-windows\WpfApp1.g.resources
+\\Mac\Home\Documents\platformy technologiczne\ex2\WpfApp1\WpfApp1\obj\Debug\net6.0-windows\WpfApp1.GeneratedMSBuildEditorConfig.editorconfig
+\\Mac\Home\Documents\platformy technologiczne\ex2\WpfApp1\WpfApp1\obj\Debug\net6.0-windows\WpfApp1.AssemblyInfoInputs.cache
+\\Mac\Home\Documents\platformy technologiczne\ex2\WpfApp1\WpfApp1\obj\Debug\net6.0-windows\WpfApp1.AssemblyInfo.cs
+\\Mac\Home\Documents\platformy technologiczne\ex2\WpfApp1\WpfApp1\obj\Debug\net6.0-windows\WpfApp1.csproj.CoreCompileInputs.cache
+\\Mac\Home\Documents\platformy technologiczne\ex2\WpfApp1\WpfApp1\obj\Debug\net6.0-windows\WpfApp1.genruntimeconfig.cache
+\\Mac\Home\Documents\platformy technologiczne\ex2\WpfApp1\WpfApp1\obj\Debug\net6.0-windows\ref\WpfApp1.dll

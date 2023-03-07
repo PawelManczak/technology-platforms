@@ -13,11 +13,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\pawelmanczak\\source\\repos\\WpfApp1\\WpfApp1\\WpfApp1.csproj",
+      "projectUniqueName": "\\\\Mac\\Home\\Documents\\platformy technologiczne\\ex2\\WpfApp1\\WpfApp1\\WpfApp1.csproj",
       "projectName": "WpfApp1",
-      "projectPath": "C:\\Users\\pawelmanczak\\source\\repos\\WpfApp1\\WpfApp1\\WpfApp1.csproj",
+      "projectPath": "\\\\Mac\\Home\\Documents\\platformy technologiczne\\ex2\\WpfApp1\\WpfApp1\\WpfApp1.csproj",
       "packagesPath": "C:\\Users\\pawelmanczak\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\pawelmanczak\\source\\repos\\WpfApp1\\WpfApp1\\obj\\",
+      "outputPath": "\\\\Mac\\Home\\Documents\\platformy technologiczne\\ex2\\WpfApp1\\WpfApp1\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\pawelmanczak\\AppData\\Roaming\\NuGet\\NuGet.Config",

@@ -4,7 +4,9 @@ using System.Reflection;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Forms;
+using System.Windows.Input;
 using System.Windows.Shapes;
+using static System.Net.Mime.MediaTypeNames;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 using MessageBox = System.Windows.MessageBox;
 using Path = System.IO.Path;
@@ -83,6 +85,7 @@ namespace WpfApp1
 
         private void setContextMenuDir(TreeViewItem tvi)
         {
+            //tvi.MouseDoubleClick +=(s, e) => show_rahs(s, e, tvi);
             tvi.ContextMenu = new ContextMenu();
 
             var create = new MenuItem()
@@ -99,10 +102,26 @@ namespace WpfApp1
             tvi.ContextMenu.Items.Add(delete); 
         }
 
+        private void show_rahs(object s, MouseButtonEventArgs e, TreeViewItem tvi)
+        {
+            var attr = File.GetAttributes(tvi.Tag.ToString() + "\\" + tvi.Header.ToString());
+            //MessageBox.Show(tvi.Tag.ToString() + "\\" + tvi.Header.ToString());
+            string[] c = { "-", "r", "a", "s", "h" };
+            var item = tvi;
+            var attrs = File.GetAttributes(Path.Combine((string)item.Tag, (string)item.Header));
+            rash.Text =
+                c[1 * (attr.HasFlag(FileAttributes.ReadOnly) ? 1 : 0)] +
+                c[2 * (attr.HasFlag(FileAttributes.Archive) ? 1 : 0)] +
+                c[3 * (attr.HasFlag(FileAttributes.System) ? 1 : 0)] +
+                c[4 * (attr.HasFlag(FileAttributes.Hidden) ? 1 : 0)];
+     
+            //MessageBox.Show(buildstring);
+        }
+
         private void setContextMenuFile(TreeViewItem tvi)
         {
             tvi.ContextMenu = new ContextMenu();
-            
+            tvi.MouseDoubleClick += (s, e) => show_rahs(s, e, tvi);
             var open= new MenuItem()
             {
                 Header = "Open"
@@ -157,9 +176,17 @@ namespace WpfApp1
         }
         private void openFile(object sender, EventArgs e, TreeViewItem tvi)
         {
-            string text = System.IO.File.ReadAllText(tvi.Tag.ToString() + "\\" + tvi.Header.ToString());
-            MessageBox.Show(tvi.Tag.ToString() + "\\" + tvi.Header.ToString() );
-            this.textBlock.Text = text;
+            try
+            {
+                string text = System.IO.File.ReadAllText(tvi.Tag.ToString() + "\\" + tvi.Header.ToString());
+                MessageBox.Show(tvi.Tag.ToString() + "\\" + tvi.Header.ToString());
+                this.textBlock.Text = text;
+            }
+            catch (Exception ioExp)
+            {
+                this.textBlock.Text = "";
+            }
+            
 
             //rash
             var attr = File.GetAttributes(tvi.Tag.ToString() + "\\" + tvi.Header.ToString());

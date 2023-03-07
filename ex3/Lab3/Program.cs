@@ -1,5 +1,6 @@
 ﻿// See https://aka.ms/new-console-template for more information
 using Lab3;
+using System.Xml.Serialization;
 
 List<Car> myCars = new List<Car>(){
 new Car("E250", new Engine(1.8, 204, "CGI"), 2009),
@@ -44,3 +45,24 @@ foreach (var groupHeader in results2)
 
     Console.WriteLine(groupHeader.Key + " " + (result/counter).ToString());
 }
+
+//2
+
+XmlSerializer serializer = new XmlSerializer(myCars.GetType(), new XmlRootAttribute("cars"));
+
+
+using (TextWriter tw = new StreamWriter("CarsCollection.xml"))
+{
+    serializer.Serialize(tw, myCars);
+}
+
+//deserialization
+var mySerializer = new XmlSerializer(typeof(List<Car>), new XmlRootAttribute("cars"));
+using var myFileStream = new FileStream("CarsCollection.xml", FileMode.Open);
+List<Car> myObject = (List<Car>) mySerializer.Deserialize(myFileStream);
+
+foreach (var e in myObject)
+{
+    Console.WriteLine(e.year.ToString() + " " + e.motor.power + " ");
+}
+

@@ -78,8 +78,8 @@ class MainClass
     {
         public int Compare((string, long) x, (string, long) y)
         {
-            if(x.Item1.Length >  y.Item1.Length) return -1;
-            if (x.Item1.Length < y.Item1.Length) return 1;
+            if(x.Item1.Length >  y.Item1.Length) return 1;
+            if (x.Item1.Length < y.Item1.Length) return -1;
             return String.Compare(x.Item1, y.Item1);
         }
     }

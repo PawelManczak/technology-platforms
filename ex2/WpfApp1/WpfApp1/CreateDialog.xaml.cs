@@ -43,7 +43,7 @@ namespace WpfApp1
             else directory = false;
             name = textInput.Text;
 
-            if (Regex.Match(name, @"^[A-Za-z0-9_~\-]{1,8}\.(txt|php|html)$").Success == false)
+            if (Regex.Match(name, @"^[A-Za-z0-9_~\-]{1,8}\.(txt|php|html)$").Success == false  && file)
             {
                 MessageBox.Show("Zła nazwa!");
                 return;
