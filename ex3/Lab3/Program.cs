@@ -1,9 +1,11 @@
 ﻿// See https://aka.ms/new-console-template for more information
 using Lab3;
 using System.Linq.Expressions;
+using System.Text;
 using System.Xml.Linq;
 using System.Xml.Serialization;
 using System.Xml.XPath;
+using static System.Net.Mime.MediaTypeNames;
 
 List<Car> myCars = new List<Car>(){
 new Car("E250", new Engine(1.8, 204, "CGI"), 2009),
@@ -47,6 +49,7 @@ foreach (var groupHeader in results2)
     }
 
     Console.WriteLine(groupHeader.Key + " " + (result/counter).ToString());
+
 }
 
 //2
@@ -90,6 +93,26 @@ foreach (XElement model in models)
 //4
 mClass.createXmlFromLinq(myCars);
 
+//5
+XDocument xmlFile = XDocument.Load("template.html");
+var root = xmlFile.LastNode as XElement;
+IEnumerable<XElement> nodes = from car in myCars
+                              select
+                              new XElement("table",
+                              new XAttribute("width", "250px"),
+                              new XAttribute("border", 1),
+                              new XElement("tr",
+                              
+                            /*new XAttribute("vertical-align", "top"),
+                              new XAttribute("text-align", "right"),*/
+                                new XElement("td", car.model,new XAttribute("width", "50px")),
+                                new XElement("td", car.motor.model,new XAttribute("width", "50px")),
+                                new XElement("td", car.motor.displacment , new XAttribute("width", "50px") ),
+                                new XElement("td", car.motor.power, new XAttribute("width", "50px")),
+                                new XElement("td", car.year, new XAttribute("width", "50px"))
+                              ));
+root.Add(nodes);
+xmlFile.Save("CarsTable.html");
 
 class mClass {
     public static void createXmlFromLinq(List<Car> myCars)
@@ -108,4 +131,6 @@ class mClass {
 
         XElement rootNode = new XElement("cars", nodes); //create a root node to contain the query results
         rootNode.Save("CarsFromLinq.xml");
-    } }
+    } 
+
+}
