@@ -121,12 +121,29 @@ XDocument doc1 = XDocument.Load("CarsCollection.xml");
 
 foreach (XElement element in doc1.Descendants("power"))
 {
-    Console.WriteLine("1");
     element.Name = "hp";
 }
 
-doc1.Save("ModifiedCarsCollection.xml");
+doc1.Save("MmmCarsCollection.xml");
 
+//6.2
+
+
+XDocument doc2 = XDocument.Load("CarsCollection.xml");
+
+foreach (XElement element in doc2.Descendants("car"))
+{   
+    Console.WriteLine(element.Name);
+    XElement yearElement = element.Element("year");
+    if (yearElement != null)
+    {
+        string yearValue = yearElement.Value;
+        element.Element("model").SetAttributeValue("year", yearValue);
+        yearElement.Remove();
+    }
+}
+
+doc2.Save("modifiedCarsCollection.xml");
 
 class mClass {
     public static void createXmlFromLinq(List<Car> myCars)
