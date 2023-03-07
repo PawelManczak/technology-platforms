@@ -1,6 +1,9 @@
 ﻿// See https://aka.ms/new-console-template for more information
 using Lab3;
+using System.Linq.Expressions;
+using System.Xml.Linq;
 using System.Xml.Serialization;
+using System.Xml.XPath;
 
 List<Car> myCars = new List<Car>(){
 new Car("E250", new Engine(1.8, 204, "CGI"), 2009),
@@ -66,3 +69,11 @@ foreach (var e in myObject)
     Console.WriteLine(e.year.ToString() + " " + e.motor.power + " ");
 }
 
+myFileStream.Close();
+
+//3.1
+
+XElement rootNode = XElement.Load("CarsCollection.xml");
+double avgHP = (double)rootNode.XPathEvaluate("sum(car/Engine[@model != \"TDI\"]/power) div count(car/Engine[@model != \"TDI\"])");
+
+Console.WriteLine("avgHP = " + avgHP);
