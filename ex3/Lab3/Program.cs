@@ -77,3 +77,13 @@ XElement rootNode = XElement.Load("CarsCollection.xml");
 double avgHP = (double)rootNode.XPathEvaluate("sum(car/Engine[@model != \"TDI\"]/power) div count(car/Engine[@model != \"TDI\"])");
 
 Console.WriteLine("avgHP = " + avgHP);
+
+//3.2
+
+IEnumerable<XElement> models = rootNode.XPathSelectElements("car[not(model = following::car/model)]/model");
+
+foreach (XElement model in models)
+{
+    System.Console.WriteLine(model.ToString());
+}
+
