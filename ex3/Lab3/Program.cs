@@ -87,3 +87,25 @@ foreach (XElement model in models)
     System.Console.WriteLine(model.ToString());
 }
 
+//4
+mClass.createXmlFromLinq(myCars);
+
+
+class mClass {
+    public static void createXmlFromLinq(List<Car> myCars)
+    {
+        IEnumerable<XElement> nodes =
+            from car in myCars
+            select new XElement("car",
+                new XElement("model", car.model),
+                new XElement("year", car.year),
+                new XElement("Engine",
+                    new XElement("displacement", car.motor.displacment),
+                    new XElement("power", car.motor.power),
+                    new XAttribute("model", car.motor.model)
+                    )
+                );
+
+        XElement rootNode = new XElement("cars", nodes); //create a root node to contain the query results
+        rootNode.Save("CarsFromLinq.xml");
+    } }
