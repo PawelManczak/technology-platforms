@@ -1,5 +1,4 @@
-﻿// See https://aka.ms/new-console-template for more information
-using Lab3;
+﻿using Lab3;
 using System.Linq.Expressions;
 using System.Text;
 using System.Xml;

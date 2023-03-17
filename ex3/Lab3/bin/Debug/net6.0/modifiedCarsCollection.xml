@@ -1,0 +1,66 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<cars xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <car>
+    <model year="2009">E250</model>
+    <Engine model="CGI">
+      <displacment>1.8</displacment>
+      <power>204</power>
+    </Engine>
+  </car>
+  <car>
+    <model year="2009">E350</model>
+    <Engine model="CGI">
+      <displacment>3.5</displacment>
+      <power>292</power>
+    </Engine>
+  </car>
+  <car>
+    <model year="2012">A6</model>
+    <Engine model="FSI">
+      <displacment>2.5</displacment>
+      <power>187</power>
+    </Engine>
+  </car>
+  <car>
+    <model year="2012">A6</model>
+    <Engine model="FSI">
+      <displacment>2.8</displacment>
+      <power>220</power>
+    </Engine>
+  </car>
+  <car>
+    <model year="2012">A6</model>
+    <Engine model="TFSI">
+      <displacment>3</displacment>
+      <power>295</power>
+    </Engine>
+  </car>
+  <car>
+    <model year="2011">A6</model>
+    <Engine model="TDI">
+      <displacment>2</displacment>
+      <power>175</power>
+    </Engine>
+  </car>
+  <car>
+    <model year="2011">A6</model>
+    <Engine model="TDI">
+      <displacment>3</displacment>
+      <power>309</power>
+    </Engine>
+  </car>
+  <car>
+    <model year="2012">S6</model>
+    <Engine model="TFSI">
+      <displacment>4</displacment>
+      <power>414</power>
+    </Engine>
+  </car>
+  <car>
+    <model year="2012">S8</model>
+    <Engine model="TFSI">
+      <displacment>4</displacment>
+      <power>513</power>
+    </Engine>
+  </car>
+</cars>
