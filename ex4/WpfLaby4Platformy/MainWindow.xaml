@@ -7,6 +7,14 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
+        <ToolBar HorizontalAlignment="Left" Height="40" VerticalAlignment="Top" Width="782">
+            <Label Height="25" Margin="0" VerticalAlignment="Top" Width="100" Content="Search for:"/>
+            <TextBox Margin="0,2,0,1" Width="120" Name="searchTextBox"></TextBox>
+            <Label Content="Search in:" Height="25" VerticalAlignment="Top"/>
+            <ComboBox Height="25" Margin="0" VerticalAlignment="Top" Width="120" Name="comboBox"/>
+            <Button Content="Search" Height="25" VerticalAlignment="Top" Width="75" Click="ButtonSearch"/>
+            <Button Content="Reload" Height="25" VerticalAlignment="Top" Width="75" HorizontalAlignment="Right" Click="ButtonReload"/>
+        </ToolBar>
         <DataGrid Name="dataGridView1" HorizontalAlignment="Left" Height="354" Margin="10,35,0,0"
                   VerticalAlignment="Top" Width="772" CanUserResizeColumns="False" 
                   AutoGenerateColumns="False" CanUserAddRows="True" CanUserReorderColumns="False"

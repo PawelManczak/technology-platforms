@@ -1,10 +1,13 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Controls.Primitives;
 using System.Windows.Forms;
 using System.Windows.Media;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
+using Window = System.Windows.Window;
 
 namespace WpfLaby4Platformy
 {
@@ -30,7 +33,7 @@ namespace WpfLaby4Platformy
 
 
             InitializeComponent();
-            //InitComboBox();
+            setComboBox();
             ClearSortingTable();
             myCarsBindingList = new CarBindingList(DataHandler.myCars);
             carBindingSource = new BindingSource();
@@ -38,6 +41,29 @@ namespace WpfLaby4Platformy
 
         }
 
+        private void ButtonSearch(object sender, RoutedEventArgs e)
+        {
+            //CheckForNewItems();
+            myCarsBindingList = new CarBindingList(DataHandler.myCars);
+            List<Car> resultListOfCars;
+            Int32 tmp;
+            if (!searchTextBox.Text.Equals(""))
+            {
+                //OutputWriter.Write(comboBox.SelectedItem.ToString());
+                string property = comboBox.SelectedItem.ToString();
+                if (Int32.TryParse(searchTextBox.Text, out tmp))
+                {
+                    resultListOfCars = myCarsBindingList.FindCars(property, tmp);
+                }
+                else
+                {
+                    resultListOfCars = myCarsBindingList.FindCars(property, searchTextBox.Text);
+                }
+
+                myCarsBindingList = new CarBindingList(resultListOfCars);
+                UpdateDataGrid();
+            }
+        }
         private void UpdateDataGrid()
         {
             carBindingSource.DataSource = myCarsBindingList;
@@ -84,6 +110,24 @@ namespace WpfLaby4Platformy
             sorting.Add("motor", false);
             sorting.Add("year", false);
 
+        }
+
+        private void ButtonReload(object sender, RoutedEventArgs e)
+        {
+            myCarsBindingList = new CarBindingList(DataHandler.myCars);
+            UpdateDataGrid();
+        }
+
+        private void setComboBox()
+        {
+            BindingList<string> list = new BindingList<string>();
+            list.Add("model");
+            list.Add("year");
+            list.Add("motor.displacement");
+            list.Add("motor.model");
+            list.Add("motor.horsePower");
+            comboBox.ItemsSource = list;
+            comboBox.SelectedIndex = 0;
         }
     }
 
