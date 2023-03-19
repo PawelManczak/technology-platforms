@@ -18,7 +18,7 @@
         <DataGrid Name="dataGridView1" HorizontalAlignment="Left" Height="354" Margin="10,35,0,0"
                   VerticalAlignment="Top" Width="772" CanUserResizeColumns="False" 
                   AutoGenerateColumns="False" CanUserAddRows="True" CanUserReorderColumns="False"
-                  CanUserSortColumns="False" AlternatingRowBackground="LightGray">
+                  CanUserSortColumns="False" >
             <DataGrid.Columns>
                 <DataGridTemplateColumn>
                     <DataGridTemplateColumn.CellTemplate>

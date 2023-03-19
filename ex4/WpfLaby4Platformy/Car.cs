@@ -31,5 +31,10 @@ namespace WpfLaby4Platformy
             this.year = 0;
             this.motor = null;
         }
+
+        public override string ToString()
+        {
+            return $"Model: {model}, Year: {year}, Engine: {motor}";
+        }
     }
 }

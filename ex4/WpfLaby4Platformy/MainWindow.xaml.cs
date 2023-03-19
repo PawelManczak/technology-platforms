@@ -26,10 +26,8 @@ namespace WpfLaby4Platformy
         
         public MainWindow()
         {
-            //OutputWriter.RemoveOutputFile();
-            //DataController.LinqStatements();
-            //DataController.PerformOperations();
-            //DataController.SortingAndSearchingWithCarBindingList();
+            DataHandler.exercise1();
+            DataHandler.exercise2();
 
 
             InitializeComponent();
@@ -43,13 +41,12 @@ namespace WpfLaby4Platformy
 
         private void ButtonSearch(object sender, RoutedEventArgs e)
         {
-            //CheckForNewItems();
+            CheckForNewItems();
             myCarsBindingList = new CarBindingList(DataHandler.myCars);
             List<Car> resultListOfCars;
             Int32 tmp;
             if (!searchTextBox.Text.Equals(""))
             {
-                //OutputWriter.Write(comboBox.SelectedItem.ToString());
                 string property = comboBox.SelectedItem.ToString();
                 if (Int32.TryParse(searchTextBox.Text, out tmp))
                 {
@@ -128,6 +125,17 @@ namespace WpfLaby4Platformy
             list.Add("motor.horsePower");
             comboBox.ItemsSource = list;
             comboBox.SelectedIndex = 0;
+        }
+
+        private void CheckForNewItems()
+        {
+            foreach (Car item in myCarsBindingList)
+            {
+                if (!DataHandler.myCars.Contains(item))
+                {
+                    DataHandler.myCars.Add(item);
+                }
+            }
         }
     }
 
