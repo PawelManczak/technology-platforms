@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "HQHfg8ORwtsYEQAqOhu+3QY6N8kQhOAYl+Y4h2pZ8xlBDfEyHBeYgeWRy3mdTx6eCOqZ/Jx5uT242KrtQoOpCg==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\pawelmanczak\\source\\repos\\PlatformyLab6\\PlatformyLab6\\PlatformyLab6.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\pawelmanczak\\.nuget\\packages\\newtonsoft.json\\13.0.3\\newtonsoft.json.13.0.3.nupkg.sha512"
+  ],
+  "logs": []
+}
