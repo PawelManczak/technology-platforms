@@ -60,11 +60,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\pawelmanczak\\source\\repos\\PlatformyLab6 — kopia\\PlatformyLab6\\PlatformyLab6.csproj",
+      "projectUniqueName": "C:\\Users\\pawelmanczak\\source\\repos\\PlatformyLab6Server\\PlatformyLab6\\PlatformyLab6.csproj",
       "projectName": "PlatformyLab6",
-      "projectPath": "C:\\Users\\pawelmanczak\\source\\repos\\PlatformyLab6 — kopia\\PlatformyLab6\\PlatformyLab6.csproj",
+      "projectPath": "C:\\Users\\pawelmanczak\\source\\repos\\PlatformyLab6Server\\PlatformyLab6\\PlatformyLab6.csproj",
       "packagesPath": "C:\\Users\\pawelmanczak\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\pawelmanczak\\source\\repos\\PlatformyLab6 — kopia\\PlatformyLab6\\obj\\",
+      "outputPath": "C:\\Users\\pawelmanczak\\source\\repos\\PlatformyLab6Server\\PlatformyLab6\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\pawelmanczak\\AppData\\Roaming\\NuGet\\NuGet.Config",

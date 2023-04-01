@@ -12,9 +12,6 @@ using Newtonsoft.Json;
 
 namespace PlatformyLab6
 {
-    /// <summary>
-    /// Interaction logic for MainWindow.xaml
-    /// </summary>
     public partial class MainWindow : Window
     {
 
@@ -22,8 +19,6 @@ namespace PlatformyLab6
         public MainWindow()
         {
             InitializeComponent();
-
-            
 
             Thread th = new Thread(() => { StartServer(); }); 
             th.IsBackground = true; 
@@ -34,7 +29,7 @@ namespace PlatformyLab6
         public void StartServer()
         {
             UdpClient udpServer = new UdpClient(1234); // port number
-            IPEndPoint remoteEP = new IPEndPoint(IPAddress.Any, 0);
+            IPEndPoint remoteEP = new IPEndPoint(IPAddress.Parse("127.0.0.1"), 0);
             while (true)
             {
                 byte[] receiveBytes = udpServer.Receive(ref remoteEP);
@@ -48,18 +43,24 @@ namespace PlatformyLab6
                 int y1 = intValues[1];
                 int x2 = intValues[2];
                 int y2 = intValues[3];
-
+                Send(x1, y1, x2, y2);   
 
                 Dispatcher.Invoke(() => create_new_line(x1, y1, x2, y2));
-               
-                
-                  
-                byte[] sendBytes = Encoding.ASCII.GetBytes("Message received");
-                udpServer.Send(sendBytes, sendBytes.Length, remoteEP);
+
+                //udpServer.Send(receiveBytes, receiveBytes.Length, remoteEP);
             }
         }
 
-
+        private void Send(int x1, int y1, int x2, int y2)
+        {
+            UdpClient udpClient = new UdpClient();
+            int[] values = new int[] { x1, y1, x2, y2 };
+            string message = JsonConvert.SerializeObject(values);
+            byte[] sendBytes = Encoding.ASCII.GetBytes(message);
+            IPEndPoint remoteEP = new IPEndPoint(IPAddress.Parse("127.0.0.1"), 4321); // server IP address and port number
+            udpClient.Send(sendBytes, sendBytes.Length, remoteEP);
+            Console.WriteLine("server is sending!");
+        }
 
         private void onCanvasMouseDown(object sender, MouseEventArgs e)
         {
